@@ -11,6 +11,7 @@
     --animation-duration: 20s;
     --mask-start: 5%;
     --mask-end: calc(100% - var(--mask-start));
+    --controls-width: 30px;
 }
 
 .wrapper {
@@ -28,6 +29,7 @@
 }
 
 #scroller-inner {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
@@ -35,7 +37,27 @@
     overflow: hidden;
     mask: linear-gradient(90deg, transparent, #ffffff var(--mask-start), #ffffff var(--mask-end), transparent);
     -webkit-mask: linear-gradient(90deg, transparent, #ffffff var(--mask-start), #ffffff var(--mask-end), transparent);
+    isolation: isolate;
+}
 
+#scroller-inner__controls {
+    position: absolute;
+    top: 0;
+    left: calc(var(--mask-end) - var(--controls-width));
+    width: var(--controls-width);
+    z-index: 1;
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+    mix-blend-mode: luminosity;
+    filter: blur(1px);
+}
+
+#scroller-inner__controls:hover {
+    filter: blur(0px);
+}
+
+#scroller-inner:hover > #scroller-inner__controls {
+    opacity: 1;
 }
 
 #scroller-inner__items {
@@ -46,12 +68,8 @@
     animation: slide var(--animation-duration) infinite linear;
 }
 
-#scroller-inner__items:hover {
-    animation-play-state: paused;
-}
-
 #scroller-inner__items > li {
-    width: 300px;   
+    width: 250px;   
 }
 
 #scroller-inner__items > li > * {
