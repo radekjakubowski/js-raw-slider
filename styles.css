@@ -8,7 +8,7 @@
 :root {
     --scroller-items-gap: 50px;
     --translation: calc(-50% - var(--scroller-items-gap) / 2);
-    --animation-duration: 20s;
+    --animation-duration: 60s;
     --mask-start: 5%;
     --mask-end: calc(100% - var(--mask-start));
     --controls-width: 30px;
