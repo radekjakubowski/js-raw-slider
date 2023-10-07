@@ -12,6 +12,7 @@
     --mask-start: 5%;
     --mask-end: calc(100% - var(--mask-start));
     --controls-width: 30px;
+    --controls-color: purple;
 }
 
 .wrapper {
@@ -48,12 +49,11 @@
     z-index: 1;
     opacity: 0;
     transition: all 300ms ease-in-out;
-    mix-blend-mode: luminosity;
     filter: blur(1px);
     cursor: pointer;
 }
 
-#scroller-inner__controls:hover {
+#scroller-inner__controls:hover, #scroller-inner__controls:active {
     filter: blur(0px);
 }
 
@@ -64,9 +64,10 @@
 #scroller-inner__controls__play-pause > svg {
     filter: drop-shadow(5px 5px 10px #ffffff);
     transition: all 300ms ease-in-out;
+    color: var(--controls-color);
 }
 
-#scroller-inner__controls__play-pause > svg:hover {
+#scroller-inner__controls__play-pause > svg:hover, svg:active {
     scale: 1.1
 }
 
@@ -84,6 +85,7 @@
 
 #scroller-inner__items > li > * {
     width: 100%;
+    -webkit-user-drag: none;
 }
 
 @keyframes slide {
